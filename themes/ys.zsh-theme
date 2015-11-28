@@ -48,8 +48,6 @@ ys_hg_prompt_info() {
 PROMPT="
 %{$fg[magenta]%}%n \
 %{$fg[white]%}at \
-%{$fg[green]%}$(box_name) \
-%{$fg[white]%}in \
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${hg_info}\
 ${git_info} \
@@ -60,8 +58,6 @@ if [[ "$USER" == "root" ]]; then
 PROMPT="
 %{$bg[yellow]%}%{$fg[red]%}%n%{$reset_color%} \
 %{$fg[white]%}at \
-%{$fg[green]%}$(box_name) \
-%{$fg[white]%}in \
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${hg_info}\
 ${git_info} \
