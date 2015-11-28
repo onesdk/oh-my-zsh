@@ -48,7 +48,7 @@ ys_hg_prompt_info() {
 PROMPT="
 %{$fg[magenta]%}%n \
 %{$fg[white]%}at \
-%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
+%{$terminfo[bold]$fg[green]%}${current_dir}%{$reset_color%}\
 ${hg_info}\
 ${git_info} \
 %{$fg[white]%}[%*]
