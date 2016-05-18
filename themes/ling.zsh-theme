@@ -2,17 +2,8 @@
 # Tested on Linux, Unix and Windows under ANSI colors.
 # It is recommended to use with a dark background and the font Inconsolata.
 # Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
-# 
-# http://ysmood.org/wp/2013/03/my-ys-terminal-theme/
-# Mar 2013 ys
-
-# Machine name.
-function box_name {
-    [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
-}
-
-# Directory info.
-local current_dir='${PWD/#$HOME/~}'
+#
+# May 2016 ling
 
 # VCS
 YS_VCS_PROMPT_PREFIX1=" %{$fg[white]%}on%{$reset_color%} "
@@ -44,23 +35,35 @@ ys_hg_prompt_info() {
 	fi
 }
 
-# Prompt format: \n # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \n $ 
+local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
+
+# Prompt format:
+#
+# PRIVILEGES USER @ MACHINE in DIRECTORY on git:BRANCH STATE [TIME] C:LAST_EXIT_CODE
+# $ COMMAND
+#
+# For example:
+#
+# % ys @ ys-mbp in ~/.oh-my-zsh on git:master x [21:47:42] C:0
+# $
+
 PROMPT="
-%{$fg[magenta]%}%n \
+%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[magenta]%}%n) \
 %{$fg[white]%}at \
-%{$terminfo[bold]$fg[green]%}${current_dir}%{$reset_color%}\
+%{$terminfo[bold]$fg[green]%}%~%{$reset_color%}\
 ${hg_info}\
 ${git_info} \
-%{$fg[white]%}[%*]
+ \
+%{$fg[white]%}[%*] $exit_code
 %{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
 
-if [[ "$USER" == "root" ]]; then
-PROMPT="
-%{$bg[yellow]%}%{$fg[red]%}%n%{$reset_color%} \
-%{$fg[white]%}at \
-%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
-${hg_info}\
-${git_info} \
-%{$fg[white]%}[%*]
-%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
-fi
+#if [[ "$USER" == "root" ]]; then
+#PROMPT="
+#%{$bg[yellow]%}%{$fg[red]%}%n%{$reset_color%} \
+#%{$fg[white]%}at \
+#%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
+#${hg_info}\
+#${git_info} \
+#%{$fg[white]%}[%*] $exit_code
+#%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+#fi
