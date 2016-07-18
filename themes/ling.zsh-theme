@@ -48,22 +48,12 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 # $
 
 PROMPT="
-%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[magenta]%}%n) \
-%{$fg[white]%}at \
-%{$terminfo[bold]$fg[green]%}%~%{$reset_color%}\
+%(#,%{$bg[yellow]%}%{$fg[black]%} %n %{$reset_color%},%{$fg[magenta]%}%n%{$reset_color%}) \
+%{$fg[white]%}at%{$reset_color%} \
+%(#,%{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%},%{$terminfo[bold]$fg[green]%}%~%{$reset_color%})\
 ${hg_info}\
 ${git_info} \
  \
 %{$fg[white]%}[%*] $exit_code
 %{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
 
-#if [[ "$USER" == "root" ]]; then
-#PROMPT="
-#%{$bg[yellow]%}%{$fg[red]%}%n%{$reset_color%} \
-#%{$fg[white]%}at \
-#%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
-#${hg_info}\
-#${git_info} \
-#%{$fg[white]%}[%*] $exit_code
-#%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
-#fi
