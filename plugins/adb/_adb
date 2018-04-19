@@ -43,6 +43,8 @@ local expl
 local -a pkgs installed_pkgs
 
 _arguments \
+	'*:: :->subcmds' && return 0
+
 	'-s[devices]:specify device:->specify_device' \
 	'*:: :->subcmds' && return 0
 
