@@ -50,7 +50,9 @@ function _ruby_version() {
 # use a neutral color, otherwise colors will vary according to time.
 function _git_time_since_commit() {
 # Only proceed if there is actually a commit.
-  if last_commit=$(git log --pretty=format:'%at' -1 2> /dev/null); then
+  if git log -1 > /dev/null 2>&1; then
+    # Get the last commit.
+    last_commit=$(git log --pretty=format:'%at' -1 2> /dev/null)
     now=$(date +%s)
     seconds_since_last_commit=$((now-last_commit))
 
