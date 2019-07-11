@@ -1,8 +1,6 @@
 # custom files
 .idea/
 custom/
-!custom/plugins/example
-!custom/example.zsh
 
 # temp files directories
 cache/
